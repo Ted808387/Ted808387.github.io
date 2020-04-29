@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="了解非同步.同步控制(asynchronous)- Callback 回呼函式- Promise 物件- Async/Await 語法 以下為正常function使用12345678function add (n1, n2) &amp;#123;        return n1+ n2;&amp;#125;fun"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ted"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="了解非同步.同步控制"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="了解非同步.同步控制(asynchronous)- Callback 回呼函式- Promise 物件- Async/Await 語法 以下為正常function使用12345678function add (n1, n2) &amp;#123;        return n1+ n2;&amp;#125;fun"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Ted Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttps://images.unsplash.com/photo-1549732616-2c8e07b22ce8?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttps://images.unsplash.com/photo-1549732616-2c8e07b22ce8?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"/>
+    
+
+    <!-- Title -->
+    
+    <title>了解非同步.同步控制 - Ted Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TEDXXX</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Ted808387?tab=overview&from=2020-04-01&to=2020-04-28" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('https://images.unsplash.com/photo-1549732616-2c8e07b22ce8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>了解非同步.同步控制</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-04-29
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/學習/">#學習</a> <a href="/tags/JavaScript/">#JavaScript</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/學習筆記/">學習筆記</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="了解非同步-同步控制-asynchronous"><a href="#了解非同步-同步控制-asynchronous" class="headerlink" title="了解非同步.同步控制(asynchronous)"></a><strong>了解非同步.同步控制(asynchronous)</strong></h2><h3 id="Callback-回呼函式"><a href="#Callback-回呼函式" class="headerlink" title="- Callback 回呼函式"></a>- Callback 回呼函式</h3><h3 id="Promise-物件"><a href="#Promise-物件" class="headerlink" title="- Promise 物件"></a>- Promise 物件</h3><h3 id="Async-Await-語法"><a href="#Async-Await-語法" class="headerlink" title="- Async/Await 語法 "></a>- Async/Await 語法 <br><br><br></h3><h4 id="以下為正常function使用"><a href="#以下為正常function使用" class="headerlink" title="以下為正常function使用"></a>以下為正常function使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add (n1, n2) &#123;</span><br><span class="line">        <span class="built_in">return</span> n1+ n2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    <span class="built_in">let</span> result = add(3, 4);</span><br><span class="line">    console.log(result);  // 會顯示7</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>()</span><br></pre></td></tr></table></figure>
+
+<h4 id="這邊為非同步的程式-setTimeout，AJAX，網路連線等都為非同步"><a href="#這邊為非同步的程式-setTimeout，AJAX，網路連線等都為非同步" class="headerlink" title="這邊為非同步的程式(setTimeout，AJAX，網路連線等都為非同步):"></a>這邊為非同步的程式(setTimeout，AJAX，網路連線等都為非同步):</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> delayedAdd(n1, n2, delayTime) &#123;</span><br><span class="line">  //在這，程式會直接往下繼續跑，不會等延遲，所以result拿到undefined</span><br><span class="line">  window.setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  <span class="built_in">return</span> n1+ n2;  </span><br><span class="line">  // 這裡的<span class="built_in">return</span>是<span class="built_in">return</span> setTimeout這個<span class="keyword">function</span>，所以顯示undefined</span><br><span class="line">   &#125;, delayTime);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">  <span class="built_in">let</span> result = delayedAdd(3, 4, 2000);</span><br><span class="line">  console.log(result); // undefined</span><br><span class="line">// 因為非同步，所以不會等他跑完延遲，直接繼續其他動作</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="解決非同步方法"><a href="#解決非同步方法" class="headerlink" title="解決非同步方法:"></a>解決非同步方法:</h4><ul>
+<li><p>Callback 回呼函式 : 當這個事件被觸發，就會去執行callback函式也就是說他要滿足函式內的某些條件才會去執行callback函式<br><strong>以下為範例:</strong></p>
+<pre><code class="bash"><span class="keyword">function</span> delayedAdd(n1, n2, delayTime, callback) { //callback放在<span class="keyword">function</span>第四個參數
+window.setTimeout(<span class="function"><span class="title">function</span></span>() {
+ callback (n1+ n2);
+}, delayTime);
+}
+<span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() {
+ delayedAdd(3, 4, 2000, <span class="keyword">function</span> callback(result) {
+ console.log(result); //延遲2秒後顯示7
+});
+}
+<span class="built_in">test</span>();</code></pre>
+</li>
+<li><p>Promise 物件 : 建立 Promise 物件: new Promise(執行函式)<br><strong>以下為範例:</strong></p>
+<pre><code class="bash"><span class="keyword">function</span> delayedAdd(n1, n2, delayTime) { //建立 Promise 物件: new Promise(執行函式)
+ <span class="built_in">return</span> new Promise(<span class="keyword">function</span> (resolve, reject) {
+   window.setTimeout(<span class="function"><span class="title">function</span></span>() {
+     resolve(n1+n2); 
+     reject(<span class="string">'壞了'</span>, <span class="string">'!!'</span>);
+   }, delayTime);  //工作完成，呼叫resolve函式，並把結果透過參數傳遞
+ });
+}
+<span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() {
+ <span class="built_in">let</span> promise = delayedAdd(3, 4, 5000);
+ promise.then((result) =&gt; { // 成功
+   console.log(result);    // 延遲完resolve後用<span class="keyword">then</span>去取出resolve後的資料
+   }).catch((error) =&gt; { // reject回傳這個，未成功
+   console.log(<span class="string">'Error'</span>,error)
+ });
+}
+<span class="built_in">test</span>();</code></pre>
+<p> 另外，還可以一次運行多個Promise，但要先多個Promise都完成後，才會繼續動作<br><strong>以下為範例:</strong></p>
+<pre><code class="bash"><span class="keyword">function</span> delayedAdd(n1, n2, delayTime) { //建立 Promise 物件: new Promise(執行函式)
+<span class="built_in">return</span> new Promise(<span class="keyword">function</span> (resolve, reject) {
+ window.setTimeout(<span class="function"><span class="title">function</span></span>() {
+   resolve(n1+n2); //工作完成，呼叫resolve函式，並把結果透過參數傳遞
+ }, delayTime);
+});
+}
+<span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() {
+ <span class="built_in">let</span> promise1 = delayedAdd(3, 6, 2000);
+<span class="built_in">let</span> promise2 = delayedAdd(2, 5, 3000);
+// 多個工作完成，才繼續工作，不過這邊他是同時進行動作，所以總共讀秒是3秒
+Promise.all([promise1, promise2]).<span class="keyword">then</span>(<span class="keyword">function</span> (results) {
+ console.log(results);
+})
+}
+<span class="built_in">test</span>();</code></pre>
+</li>
+</ul>
+<ul>
+<li>Async/Await (簡化 Promise語法) : 邏輯與 Promise類同，必須要有一個函式return物件<br><strong>以下為範例:</strong><pre><code class="bash"><span class="keyword">function</span> delayedAdd(n1, n2, delayTime) {
+ //建立 Promise 物件: new Promise(執行函式)
+ <span class="built_in">return</span> new Promise(<span class="keyword">function</span> (resolve, reject) {
+   window.setTimeout(<span class="function"><span class="title">function</span></span>() {
+   resolve(n1+n2);   
+   //工作完成，呼叫resolve函式，並把結果透過參數傳遞
+   }, delayTime);
+ });
+}
+async <span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() { //函式前加上async開頭
+ <span class="built_in">let</span> result = await delayedAdd(3, 4, 2000);
+ // 這裡的result會直接從resolve傳遞進資料，await會等待resolve回來
+ console.log(result); // 7
+}
+<span class="built_in">test</span>();</code></pre>
+</li>
+</ul>
+<p><br><br></p>
+<p>寫起來記錄一下<br></p>
+<p><strong>參考 :</strong> </p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=NOprCnnjHm0" target="_blank" rel="noopener">回呼函式 Callbacks、Promises 物件、Async/Await 非同步流程控制</a><br></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10192739" target="_blank" rel="noopener">重新認識 JavaScript: Day 18 Callback Function 與 IIFE</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+        <script>
+            var disqus_config = function () {
+                this.language = "zh_TW";
+            };
+        </script>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Ted808387?tab=overview&from=2020-04-01&to=2020-04-28" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2020 Ted<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'ted-blog-1';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>
