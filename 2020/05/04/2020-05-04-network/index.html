@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="網路基礎概念
+Client &amp;amp; Server
+TCP(Transmission Control Protocol)
+HTTP (Hypertext Transfer Protocol)Client &amp;amp; Server一般來說傳輸資料的兩端會分為 客戶端 ( Client ) 跟 伺服器"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ted"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="網路基礎概念"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="網路基礎概念
+Client &amp;amp; Server
+TCP(Transmission Control Protocol)
+HTTP (Hypertext Transfer Protocol)Client &amp;amp; Server一般來說傳輸資料的兩端會分為 客戶端 ( Client ) 跟 伺服器"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Ted Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttps://images.unsplash.com/photo-1549732616-2c8e07b22ce8?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttps://images.unsplash.com/photo-1549732616-2c8e07b22ce8?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"/>
+    
+
+    <!-- Title -->
+    
+    <title>網路基礎概念 - Ted Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TEDXXX</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Ted808387?tab=overview&from=2020-04-01&to=2020-04-28" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('https://images.unsplash.com/photo-1549732616-2c8e07b22ce8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>網路基礎概念</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-05-04
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/學習/">#學習</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/other/">other</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="網路基礎概念"><a href="#網路基礎概念" class="headerlink" title="網路基礎概念"></a>網路基礎概念</h1><ul>
+<li>Client &amp; Server</li>
+<li>TCP(Transmission Control Protocol)</li>
+<li>HTTP (Hypertext Transfer Protocol)<h2 id="Client-amp-Server"><a href="#Client-amp-Server" class="headerlink" title="Client &amp; Server"></a>Client &amp; Server</h2><strong>一般來說傳輸資料的兩端會分為 客戶端 ( Client ) 跟 伺服器端 ( Server )</strong></li>
+<li>Client： 以網頁來說就是你的瀏覽器、電腦，主要會發送 「 請求 request 」到 Server 端</li>
+<li>Server： 收到 request 開始處理資料，完成後會回傳 「回應 response 」到 Client 端</li>
+</ul>
+<p><strong>以下為簡易程序:</strong></p>
+<ul>
+<li>瀏覽器發送 HTTP request 到 Server<ul>
+<li>request 包含 head 跟 body</li>
+</ul>
+</li>
+<li>Server 回傳 response 到瀏覽器<ul>
+<li>response 包含 head 跟 body</li>
+</ul>
+</li>
+<li>瀏覽器進行解析 html、css、js、圖片檔案…等等，渲染成可讀性高的網頁內容</li>
+</ul>
+<p><strong>再詳細一點的request(但還是很簡易):</strong></p>
+<ol>
+<li>一開始先發送 request 到副檔名為 .html 的 url</li>
+<li>DNS(域名系統) 解析成 IP 位置</li>
+<li>Server 接收到 request、 回傳 response</li>
+<li>瀏覽器解析 html 檔案</li>
+<li>根據 html 內容，一但發現有 CSS、JS、圖片檔案，再發送各檔案的 request（這裡就1.2.3步驟那邊）</li>
+<li>發送完包含在 html 所有資源的 request</li>
+<li>開始下載資源 ( CSS、JS、圖片檔 )</li>
+<li>進行渲染網頁</li>
+</ol>
+<h2 id="TCP-Transmission-Control-Protocol"><a href="#TCP-Transmission-Control-Protocol" class="headerlink" title="TCP(Transmission Control Protocol)"></a>TCP(Transmission Control Protocol)</h2><p><strong>三項交握(Three-way handshake)</strong><br>    舉個A(Client)，B(Server)互相傳遞資料的例子:</p>
+<ol>
+<li>A先傳給B資料 — A傳送功能正常</li>
+<li>B接收到資料 — B接收功能正常</li>
+<li>B回傳A資料(告知已收到) — B傳送功能正常</li>
+<li>A接收到資料(知道B接收功能正常) — A接收功能正常</li>
+<li>A再回傳資料給B，讓B知道他傳送的資料已收到</li>
+<li>B接收到資料(知道A接收功能正常) — B傳送功能正常</li>
+</ol>
+<p><strong>A–&gt;B， B–&gt;A， A–&gt;B</strong><br>以上為三次的傳遞動作，這樣A，B都知道雙方的接收跟傳送功能都正常，就可以正常互傳遞資料，不過次數不是一定，也可以三次以上，但三次算最低限度</p>
+<p><strong>TCP為通訊協定</strong>，必須制定一些協定，才可以保證資料傳送接收正常</p>
+<h4 id="網路分層"><a href="#網路分層" class="headerlink" title="網路分層:"></a>網路分層:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 保證收發正常(TCP) --- 如何傳送資料	</span><br><span class="line">- 傳送者&#x2F;接收者(IP:Internet Protocol) --- 收發地址</span><br><span class="line">- 傳送資料(實體電纜) --- 實際傳送資料</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP-Hypertext-Transfer-Protocol"><a href="#HTTP-Hypertext-Transfer-Protocol" class="headerlink" title="HTTP (Hypertext Transfer Protocol)"></a>HTTP (Hypertext Transfer Protocol)</h2><h4 id="應用在HTTP的網路分層"><a href="#應用在HTTP的網路分層" class="headerlink" title="應用在HTTP的網路分層:"></a>應用在HTTP的網路分層:</h4><p>這裡加上了HTTP協定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 訂機票(HTTP) --- 實際應用</span><br><span class="line">- 保證收發正常(TCP) --- 如何傳送資料</span><br><span class="line">- 傳送者&#x2F;接收者(IP:Internet Protocol) --- 收發地址</span><br><span class="line">- 傳送資料(實體電纜) --- 實際傳送資料</span><br></pre></td></tr></table></figure>
+
+<p><strong>HTTP通訊協議:</strong></p>
+<ul>
+<li>標準化內容格式</li>
+<li>html分為header &amp; body</li>
+<li>狀態碼(status code)顯示傳送接收結果<ul>
+<li>200成功，3XX重新導向，4XX客戶端錯誤，5XX伺服器端錯誤</li>
+</ul>
+</li>
+<li>請求資料方法(HTTP method)<ul>
+<li>GET接收，POST傳送，DELETE刪除，PUT更新(覆蓋資料)，PATCH更新(針對現有資料更新)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Port(連線埠): 服務代碼</strong></p>
+<ul>
+<li>傳送到指定的Server IP : Port ，才能使用那個網頁的服務<ul>
+<li><strong>EX.</strong> server IP:80 — HTTP伺服器服務代碼(瀏覽器就是80，默認碼)</li>
+<li><strong>EX.</strong> server IP:21 — FTP伺服器服務代碼</li>
+</ul>
+</li>
+</ul>
+<p>我們把上面的HTTP網路再分詳細一點</p>
+<h4 id="網路分層-1"><a href="#網路分層-1" class="headerlink" title="網路分層:"></a>網路分層:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 訂機票(HTTP)  &#x2F;  訂食物(FTP)   --- 實際應用</span><br><span class="line">- 保證收發正常(TCP) --- 如何傳送資料</span><br><span class="line">- 傳送者&#x2F;接收者(IP:Internet Protocol) --- 收發地址</span><br><span class="line">- 傳送資料(實體電纜) --- 實際傳送資料</span><br></pre></td></tr></table></figure>
+<p>另外，傳送資料協定也有其他種:<br><strong>UDP（User Datagram Protocol）用戶數據報協議，用於即時性傳送資料</strong><br><strong>EX.</strong> live直播.即時通話或是即時視訊，因為重點在傳輸速度，但不可保證收發資料正常</p>
+<p><strong>最後把上面分層整理一下，變成下面這樣:</strong></p>
+<h4 id="TPC-IP-四層模型"><a href="#TPC-IP-四層模型" class="headerlink" title="TPC/IP 四層模型"></a>TPC/IP 四層模型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 訂機票(HTTP)   &#x2F;   訂食物(FTP)      --- 實際應用             應用層</span><br><span class="line">- 保證收發正常(TCP)&#x2F; 即時傳輸(UDP) --- 如何傳送資料             傳輸層</span><br><span class="line">- 傳送者&#x2F;接收者(IP:Internet Protocol) --- 收發地址         網路互連層</span><br><span class="line">- 傳送資料(實體電纜)               --- 實際傳送資料         網路存取層</span><br></pre></td></tr></table></figure>
+
+<h2 id="網域名稱系統（DNS：Domain-Name-System）"><a href="#網域名稱系統（DNS：Domain-Name-System）" class="headerlink" title="網域名稱系統（DNS：Domain Name System）"></a>網域名稱系統（DNS：Domain Name System）</h2><p><strong>輸入網址後利用DNS查詢對應的IP位址，也就是把網址轉換成IP位址，或可以逆向操作</strong></p>
+<h4 id="網域層級表示"><a href="#網域層級表示" class="headerlink" title="網域層級表示:"></a>網域層級表示:</h4><p><img src="https://i.imgur.com/9gZjDPf.png" alt="層級表示"></p>
+<h4 id="DNS-的查詢流程"><a href="#DNS-的查詢流程" class="headerlink" title="DNS 的查詢流程:"></a>DNS 的查詢流程:</h4><ol>
+<li>client side 先向DNS伺服器查詢網址的IP位址</li>
+<li>DNS會先查詢自己記憶體內有沒有暫存這網址</li>
+<li>沒有就轉向Root domain查詢</li>
+<li>Root domain沒查詢到在往Top level domain查詢</li>
+<li>以此類推直到找到此網址IP</li>
+</ol>
+<ul>
+<li>如果我們查尋同一個網站，電腦就會再hosts將這網站的IP位址紀錄下來，這樣一來以後只要重新查找相同網站就會從hosts找到並馬上連到那個網站，但假如查找沒搜尋過的網站，電腦就會找尋比較久，這段時間其實就是電腦再向DNS伺服器查尋IP位址</li>
+</ul>
+<h5 id="來源"><a href="#來源" class="headerlink" title="來源:"></a>來源:</h5><ul>
+<li><a href="https://www.stockfeel.com.tw/dns-%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F%E5%A6%82%E4%BD%95%E9%81%8B%E7%94%A8%EF%BC%9F/" target="_blank" rel="noopener">DNS 伺服器是什麼？如何運用？</a></li>
+<li><a href="https://yakimhsu.com/project/project_w4_Network_http.html" target="_blank" rel="noopener">網路基礎</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+        <script>
+            var disqus_config = function () {
+                this.language = "zh_TW";
+            };
+        </script>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Ted808387?tab=overview&from=2020-04-01&to=2020-04-28" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2020 Ted<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'ted-blog-1';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>
